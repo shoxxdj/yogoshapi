@@ -20,6 +20,11 @@ const initYogoshapi = (apiUsername,apikey)=>{
         return apiUsername+':'+apikey;
     }
 
+    async function getPrograms(){
+        let datas = await apiClient.get('programs')
+        return Bourne.parse(datas.body);
+    }
+
     async function getReports(){
         let datas = await apiClient.get('reports');
         return Bourne.parse(datas.body);
@@ -177,6 +182,7 @@ const initYogoshapi = (apiUsername,apikey)=>{
 
     return {
         printUsername,
+        getPrograms,
         getReports,
         getAllReports,
         getNonReviewedReports,
